@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create List</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Create a New List</h1>
+    <a href="php/home.php">Home</a>
+  </header>
+
+  <main>
+    <form action="php/create_list.php" method="post">
+      <label for="name">List Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="is_public">Public:</label>
+      <input type="checkbox" id="is_public" name="is_public">
+
+      <button type="submit">Create List</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Movie Library</p>
+  </footer>
+</body>
+</html>

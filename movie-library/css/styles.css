@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #DEFCF9;
+    color: #333;
+  }
+  
+  header {
+    background-color: #CCA8E9;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1, h2 {
+    text-align: center;
+    margin: 0;
+  }
+  
+  main {
+    padding: 2rem 1rem;
+  }
+  
+  .auth-section {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .auth-section button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #C3BEF0;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    margin: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .auth-section button:hover {
+    background-color: #CCA8E9;
+  }
+  
+  .search-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .search-section input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    border: 1px solid #CADEFC;
+    border-radius: 5px;
+  }
+  
+  .search-section button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #C3BEF0;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-section button:hover {
+    background-color: #CCA8E9;
+  }
+  
+  .results-section, .lists-section {
+    margin-top: 2rem;
+  }
+  
+  .movie-card, .list-card {
+    background-color: #fff;
+    border: 1px solid #CADEFC;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  footer {
+    background-color: #CCA8E9;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+  

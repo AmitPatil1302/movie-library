@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Movies to List</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Add Movies to List</h1>
+    <a href="php/home.php">Home</a>
+  </header>
+
+  <main>
+    <form action="add_movies.php" method="post">
+      <label for="list_id">Select List:</label>
+      <select id="list_id" name="list_id" required>
+        <!-- Populate with user's lists -->
+        <?php
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ../signin.html');
+            exit();
+        }
+        include 'config.php';
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT id, name FROM movie_lists WHERE user_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        // Check for errors
+        if (!$result) {
+            echo "Error: " . $stmt->error;
+        }
+    
+        // Check if any rows are returned
+        if ($result->num_rows === 0) {
+            echo "<option value='' disabled selected>No lists found</option>";
+        } else {
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['id'] . "'>" . htmlspecialchars($row['name']) . "</option>";
+            }
+        }
+    
+        // Debugging output
+        var_dump($result);
+    
+        $stmt->close();
+        $conn->close();
+        ?>
+    </select>
+
+      <label for="movie_id">Select Movie:</label>
+      <select id="movie_id" name="movie_id" required>
+        <!-- Populate with available movies -->
+        <?php
+        include 'config.php';
+        $sql = "SELECT id, title FROM movies";
+        $result = $conn->query($sql);
+    
+        // Check for errors
+        if (!$result) {
+            echo "Error: " . $conn->error;
+        }
+    
+        // Check if any rows are returned
+        if ($result->num_rows === 0) {
+            echo "<option value='' disabled selected>No movies found</option>";
+        } else {
+            while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row['id'] . "'>" . htmlspecialchars($row['title']) . "</option>";
+            }
+        }
+    
+        // Debugging output
+        var_dump($result);
+    
+        $conn->close();
+        ?>
+    </select>
+
+      <button type="submit">Add Movie</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Movie Library</p>
+  </footer>
+</body>
+</html>
